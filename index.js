@@ -37,3 +37,5 @@ function createManager() {
       //addMember function to re-run prompt
     });
   }
+
+  // Add function for intern, and engineer
