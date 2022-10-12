@@ -8,6 +8,36 @@ const Engineer = require('./lib/Engineer');
 const Employee = require('./lib/Employee');
 const teamArray = [];
 
+function addMember() {
+  console.log(teamArray);
+  inquirer.prompt([
+    {
+      type: "list",
+      name: "addMember",
+      message: "What type of employee do you want to add?",
+      choices: ["Manager", "Intern", "Engineer", "none"]
+      
+    }
+  ]).then(response => {
+    if(response.addMember === "Manager") {
+      createManager();
+    }
+    else if(response.addMember === "Intern") {
+      createIntern();
+    }
+    else if(response.addMember === "Engineer") {
+      createEngineer();
+    } else {
+      generateTeam();
+      // if none generate HTML
+    }
+  })
+};
+
+function generateTeam() {
+  fs.writeFileSync("dist/index.html", generateHTML(teamArray))
+}
+
 function createManager() {
     console.log("Please build your team");
     inquirer.prompt([
@@ -35,6 +65,7 @@ function createManager() {
       const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
       teamArray.push(manager);
       //addMember function to re-run prompt
+      addMember();
     });
   };
 
@@ -65,6 +96,7 @@ function createManager() {
       const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
       teamArray.push(intern);
       //addMember function to re-run prompt
+      addMember();
     });
   };
 
@@ -95,6 +127,8 @@ function createManager() {
       const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
       teamArray.push(engineer);
       //addMember function to re-run prompt
+      addMember();
     });
   };
 
+createManager();
