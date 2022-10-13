@@ -33,7 +33,7 @@ Instructions:
 - answer prompted questions.
 - On success an HTML will be generated in the dist folder.
 
-Link to Video:
+Link to Video: https://drive.google.com/file/d/1lu8A4fzUhZ7Mnsrz7_Hae-Y-vlup2xDR/view?usp=sharing
 
 ![alt Website Screenshot](./images/Preview.JPG)
 
