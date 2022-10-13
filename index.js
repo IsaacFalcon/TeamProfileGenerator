@@ -36,7 +36,7 @@ function addMember() {
 
 function generateTeam() {
   fs.writeFileSync("dist/index.html", generateHTML(teamArray))
-}
+};
 
 function createManager() {
     console.log("Please build your team");
